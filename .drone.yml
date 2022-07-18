@@ -1,0 +1,23 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: yamllint
+    image: sdesbure/yamllint:latest
+    commands:
+      - yamllint .drone.yml
+  - name: hadolint
+    image: hadolint/hadolint:v2.9.2-alpine
+    commands:
+      - hadolint Dockerfile
+  - name: docker
+    image: plugins/docker:20.13
+    settings:
+      username: hsmtkk
+      password:
+        from_secret: dockerhub-token
+      repo: hsmtkk/verbose-robot
+      tags: latest
+
