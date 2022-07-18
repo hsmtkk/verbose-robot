@@ -20,4 +20,3 @@ steps:
         from_secret: dockerhub-token
       repo: hsmtkk/verbose-robot
       tags: latest
-
