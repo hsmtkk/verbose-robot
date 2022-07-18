@@ -11,7 +11,7 @@ steps:
   - name: hadolint
     image: hadolint/hadolint:v2.9.2-alpine
     commands:
-      - hadolint Dockerfile
+      - hadolint --ignore DL3008 --ignore DL3025 Dockerfile
   - name: docker
     image: plugins/docker:20.13
     settings:
